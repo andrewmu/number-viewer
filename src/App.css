@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  background-color: #f7f7f7;
+}
+
+.App {
+  margin: 0 20px;
+}
+
+header {
+  margin: 0 -20px 10px -20px;
+  padding: 20px;
+  color: #fff;
+  background-color: #666;
+}
+
+.nav {
+  float: right;
+}
+
+.nav a {
+  color: #fff;
+}
+
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
