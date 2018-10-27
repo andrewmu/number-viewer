@@ -21,17 +21,17 @@ class App extends Component {
         <header className="App-header">
           <ul className="nav">
             <li>
-              <NavLink to="/">Viewer</NavLink>
+              <NavLink to={`${process.env.PUBLIC_URL}/`}>Viewer</NavLink>
             </li>
             <li>
-              <NavLink to="/map">Value Map</NavLink>
+              <NavLink to={`${process.env.PUBLIC_URL}/map`}>Value Map</NavLink>
             </li>
           </ul>
           <h1>Number Viewer</h1>
         </header>
         <Router>
-          <NumberViewer path="/" />
-          <NumberMap path="/map" />
+          <NumberViewer path={`${process.env.PUBLIC_URL}/`}/>
+          <NumberMap path={`${process.env.PUBLIC_URL}/map`}/>
         </Router>
       </div>
     );
