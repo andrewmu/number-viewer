@@ -1,23 +1,22 @@
 export const EXPONENT_BIAS = 1023;
 
-export const extractDoubleParts = n => {
+export const extractDoubleParts = (n) => {
   let floatArray = Float64Array.of(n);
-  const intView = new Int32Array(floatArray.buffer);
+  const intView = new Uint32Array(floatArray.buffer);
 
   const sign = (intView[1] >> 31) & 0x1;
   const exponent = (intView[1] >> 20) & 0x7ff;
   const upperMantissa = intView[1] & 0x000fffff;
-  const lowerMantissa =
-    intView[0] < 0 ? 0x100000000 + intView[0] : intView[0] | 0;
+  const lowerMantissa = intView[0];
 
   const mantissa =
     exponent !== 0
       ? createDoubleFromParts({
-        sign: 0,
-        exponent: EXPONENT_BIAS,
-        upperMantissa,
-        lowerMantissa
-      })
+          sign: 0,
+          exponent: EXPONENT_BIAS,
+          upperMantissa,
+          lowerMantissa,
+        })
       : upperMantissa * Math.pow(2, -20) + lowerMantissa * Math.pow(2, -52); // denorm
 
   return {
@@ -25,16 +24,11 @@ export const extractDoubleParts = n => {
     exponent,
     upperMantissa,
     lowerMantissa,
-    mantissa
+    mantissa,
   };
 };
 
-export const createDoubleFromParts = ({
-  sign,
-  exponent,
-  upperMantissa,
-  lowerMantissa
-}) => {
+export const createDoubleFromParts = ({ sign, exponent, upperMantissa, lowerMantissa }) => {
   let intArray = new Int32Array(2);
   intArray[0] = lowerMantissa;
   intArray[1] = (sign << 31) | (exponent << 20) | upperMantissa;
@@ -43,12 +37,7 @@ export const createDoubleFromParts = ({
   return floatView[0];
 };
 
-export const minimumIncrementParts = ({
-  sign,
-  exponent,
-  upperMantissa,
-  lowerMantissa
-}) => {
+export const minimumIncrementParts = ({ sign, exponent, upperMantissa, lowerMantissa }) => {
   if (lowerMantissa === 0xffffffff) {
     if (upperMantissa === 0xfffff) {
       upperMantissa = 0;
@@ -66,16 +55,11 @@ export const minimumIncrementParts = ({
     sign,
     exponent,
     upperMantissa,
-    lowerMantissa
+    lowerMantissa,
   };
 };
 
-export const minimumDecrementParts = ({
-  sign,
-  exponent,
-  upperMantissa,
-  lowerMantissa
-}) => {
+export const minimumDecrementParts = ({ sign, exponent, upperMantissa, lowerMantissa }) => {
   if (lowerMantissa === 0) {
     if (upperMantissa === 0) {
       upperMantissa = 0xfffff;
@@ -93,27 +77,22 @@ export const minimumDecrementParts = ({
     sign,
     exponent,
     upperMantissa,
-    lowerMantissa
+    lowerMantissa,
   };
 };
 
-export const toNonScientificString = n => {
+export const toNonScientificString = (n) => {
   try {
     let str = n.toString();
     if (str.includes('e')) {
-      const [[whole, fraction], [exp]] = str
-        .split('e')
-        .map(parts => parts.split('.'));
+      const [[whole, fraction], [exp]] = str.split('e').map((parts) => parts.split('.'));
 
       let digits = String(parseInt(whole));
       if (fraction !== undefined) digits += fraction;
 
       const exp10 = parseInt(exp);
       if (exp10 < 0) {
-        str =
-          '0.' +
-          '0'.repeat(-exp10 - 1) +
-          digits.substring(0, Math.max(1, 17 + exp10));
+        str = '0.' + '0'.repeat(-exp10 - 1) + digits.substring(0, Math.max(1, 17 + exp10));
       } else if (exp10 > 0) {
         str = digits + '0'.repeat(exp10 - 1);
       }

@@ -27,7 +27,7 @@ describe('extractDoubleParts', () => {
     const parts = extractDoubleParts(1.0);
     expect(parts).toMatchObject({
       sign: 0,
-      exponent: 1023,
+      exponent: 0x3ff, // 1023
       upperMantissa: 0,
       lowerMantissa: 0,
       mantissa: 1.0

@@ -1,0 +1,17 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "react-app",
+    "plugin:jsx-a11y/recommended" ,
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:markdown/recommended"
+  ],
+  "plugins": ["jsx-a11y", "prettier", "html"],
+  "rules": {
+    "no-empty-interface": 0,
+    "prettier/prettier": "warn"
+  }
+}
