@@ -1,13 +1,13 @@
 {
-  "main.css": "/number-viewer/static/css/main.a6befbce.chunk.css",
-  "main.js": "/number-viewer/static/js/main.ee63e597.chunk.js",
-  "main.js.map": "/number-viewer/static/js/main.ee63e597.chunk.js.map",
-  "static/js/1.79f09ac5.chunk.js": "/number-viewer/static/js/1.79f09ac5.chunk.js",
-  "static/js/1.79f09ac5.chunk.js.map": "/number-viewer/static/js/1.79f09ac5.chunk.js.map",
-  "runtime~main.js": "/number-viewer/static/js/runtime~main.9f7f09ef.js",
-  "runtime~main.js.map": "/number-viewer/static/js/runtime~main.9f7f09ef.js.map",
-  "static/css/main.a6befbce.chunk.css.map": "/number-viewer/static/css/main.a6befbce.chunk.css.map",
-  "index.html": "/number-viewer/index.html",
-  "precache-manifest.ee6ce17a3a727e273601689cdd2aee51.js": "/number-viewer/precache-manifest.ee6ce17a3a727e273601689cdd2aee51.js",
-  "service-worker.js": "/number-viewer/service-worker.js"
+  "files": {
+    "main.css": "/number-viewer/static/css/main.4562f757.css",
+    "main.js": "/number-viewer/static/js/main.0740a40b.js",
+    "index.html": "/number-viewer/index.html",
+    "main.4562f757.css.map": "/number-viewer/static/css/main.4562f757.css.map",
+    "main.0740a40b.js.map": "/number-viewer/static/js/main.0740a40b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4562f757.css",
+    "static/js/main.0740a40b.js"
+  ]
 }
