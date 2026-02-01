@@ -4,7 +4,7 @@
   "version": "0.1.1",
   "private": true,
   "devDependencies": {
-    "eslint": "^8.15.0",
+    "eslint": "^9.26.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-html": "^6.2.0",
     "eslint-plugin-markdown": "^2.2.1",
